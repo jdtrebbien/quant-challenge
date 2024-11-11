@@ -2,3 +2,7 @@ ipykernel
 fastapi
 uvicorn
 sqlalchemy
+pandas
+openpyxl
+matplotlib
+
