@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Path
 from app.adapters.pnl_adapter import PnLAdapter
-from app.models.pnl_model import PnLData
-from app.models.volume_model import VolumeData
+from app.schemas.pnl_data import PnLData
+from app.schemas.volume_data import VolumeData
 
 router = APIRouter()
 

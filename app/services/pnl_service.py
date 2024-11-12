@@ -1,7 +1,8 @@
 from typing import List, Tuple
 from datetime import datetime
-from app.models.trade_model import TradeData
+from app.models.trade_data import TradeData
 from app.repositories.trade_repository import TradeRepository
+
 
 class PnLService:
     """
@@ -10,7 +11,7 @@ class PnLService:
 
     def __init__(self):
         self.repository = TradeRepository()
-    
+
     def get_pnl_by_strategy_id_with_timestamp(self, strategy_id: str) -> Tuple[float, datetime]:
         """
         Calculates the PnL associated with a given strategy ID for all trades.
@@ -19,12 +20,12 @@ class PnLService:
             strategy_id (str): The ID of the strategy to filter the trades by.
 
         Returns:
-            Tuple[float, datetime]: The pnl of the strategy with the corresponding timestamp when the data was 
+            Tuple[float, datetime]: The pnl of the strategy with the corresponding timestamp when the data was
             captured from the db.
         """
         trades, timestamp = self.repository.get_all_by_strategy_id_with_timestamp(strategy_id=strategy_id)
         return (self._compute_pnl(trades), timestamp)
-    
+
     @staticmethod
     def _compute_pnl(trades: List[TradeData]) -> float:
         """

@@ -1,9 +1,8 @@
 from typing import List, Tuple
 from sqlalchemy.orm import Session
-from app.models.trade_model import TradeData
+from app.models.trade_data import TradeData
 from app.database.database import SessionLocal
 from datetime import datetime, timezone
-
 
 
 class TradeRepository:
@@ -39,7 +38,7 @@ class TradeRepository:
             strategy_id (str): The ID of the strategy to filter trades by.
 
         Returns:
-            Tuple[List[TradeData], datetime]: A list of TradeData instances matching the specified strategy ID 
+            Tuple[List[TradeData], datetime]: A list of TradeData instances matching the specified strategy ID
             with a timestamp that is captured right before the db call.
         """
         timestamp = datetime.now(timezone.utc)
