@@ -1,6 +1,7 @@
 {
     "python.analysis.extraPaths": ["./app"],
     "editor.formatOnSave": true,
+    "editor.rulers": [80, 120],
     "[python]": {
         "diffEditor.ignoreTrimWhitespace": false,
         "editor.wordBasedSuggestions": "off",
