@@ -5,6 +5,7 @@ from app.models.volume_model import VolumeData
 
 router = APIRouter()
 
+
 @router.get("/pnl/{strategy_id}")
 def get_pnl(strategy_id: str = Path(..., description="Identifier of the strategy")) -> PnLData:
     """
@@ -18,8 +19,9 @@ def get_pnl(strategy_id: str = Path(..., description="Identifier of the strategy
     """
     return PnLAdapter().get_pnl_by_strategy_id(strategy_id)
 
+
 @router.get("/pnl/total_volume/buy")
-def get_total_volume() -> VolumeData:
+def get_total_volume_buy() -> VolumeData:
     """
     Computes the total buy volume for all trades.
 
@@ -28,8 +30,9 @@ def get_total_volume() -> VolumeData:
     """
     return PnLAdapter().compute_total_buy_volume()
 
+
 @router.get("/pnl/total_volume/sell")
-def get_total_volume() -> VolumeData:
+def get_total_volume_sell() -> VolumeData:
     """
     Computes the total sell volume for all trades.
 
