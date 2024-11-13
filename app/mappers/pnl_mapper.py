@@ -1,5 +1,5 @@
-from app.models.volume_model import VolumeData
-from app.models.pnl_model import PnLData
+from app.schemas.volume_data import VolumeData
+from app.schemas.pnl_data import PnLData
 from datetime import datetime
 
 
@@ -8,6 +8,7 @@ class PnLMapper:
     Mapper for transforming raw data into structured data transfer objects (DTOs)
     for PnL and volume data.
     """
+
     @staticmethod
     def from_quantity_to_volume(quantity: float) -> VolumeData:
         """
@@ -20,7 +21,7 @@ class PnLMapper:
             VolumeData: An object containing the specified volume.
         """
         return VolumeData(volume=quantity)
-    
+
     @staticmethod
     def to_pnl_data(strategy: str, value: float, unit: str, capture_time: datetime) -> PnLData:
         """
@@ -35,9 +36,4 @@ class PnLMapper:
         Returns:
             PnLData: An object containing structured PnL information.
         """
-        return PnLData(
-            strategy=strategy,
-            value=value,
-            unit=unit,
-            capture_time=capture_time
-        )
+        return PnLData(strategy=strategy, value=value, unit=unit, capture_time=capture_time)

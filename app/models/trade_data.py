@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Float, Integer, CheckConstraint
 from app.database.database import Base
 
+
 class TradeData(Base):
     """
     SQLAlchemy model for the `epex_12_20_12_13` table, representing trade data.
@@ -12,6 +13,7 @@ class TradeData(Base):
         side (str): The side of the trade, either 'buy' or 'sell'.
         strategy (str): The strategy identifier associated with the trade.
     """
+
     __tablename__ = "epex_12_20_12_13"
 
     id = Column(String, primary_key=True)
@@ -20,6 +22,4 @@ class TradeData(Base):
     side = Column(String, nullable=False)
     strategy = Column(String, nullable=False)
 
-    __table_args__ = (
-        CheckConstraint("side IN ('buy', 'sell')", name="side_check"),
-    )
+    __table_args__ = (CheckConstraint("side IN ('buy', 'sell')", name="side_check"),)
